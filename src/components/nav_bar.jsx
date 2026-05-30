@@ -1,28 +1,31 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-export const NavBar = () => {
-  const navLinkClass = ({ isActive }) => {
-    const classes = ['nav-bar__link']
-    if (isActive) classes.push('nav-bar__link--active')
-    return classes.join(' ')
-  }
+export default function NavBar() {
+  const linkStyle = ({ isActive }) => ({
+    color: isActive ? '#F2A900' : '#FFFFFF',
+    textDecoration: 'none',
+    fontWeight: 'bold',
+    fontSize: '1.1rem',
+    letterSpacing: '0.5px'
+  });
+
   return (
-    <nav className='nav-bar'>
-      <NavLink
-        className={navLinkClass}
-        to='/'
-      >
+    <nav style={{ 
+      backgroundColor: '#003366', 
+      padding: '15px 30px', 
+      display: 'flex', 
+      alignItems: 'center',
+      gap: '30px', // Espacio entre los enlaces
+      borderBottom: '4px solid #F2A900',
+      boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+    }}>
+      <NavLink to="/" style={linkStyle}>
         Inicio
       </NavLink>
-      <NavLink
-        className={navLinkClass}
-        to='/lightbulb'
-      >
-        Ampolleta
+      <NavLink to="/recintos" style={linkStyle}>
+        Recintos Deportivos
       </NavLink>
     </nav>
-  )
+  );
 }
- 
-export default NavBar
