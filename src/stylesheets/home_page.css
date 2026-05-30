@@ -1,0 +1,357 @@
+/* CONTENEDOR PRINCIPAL Y ENCABEZADO */
+.home-container {
+  font-family: Arial, sans-serif;
+  background-color: #F9FAFB;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.home-header {
+  max-width: 1000px;
+  margin: 0 auto 30px;
+  border-bottom: 3px solid #F2A900;
+  padding-bottom: 15px;
+}
+
+.home-header h1 {
+  color: #003366;
+  margin: 0 0 5px 0;
+}
+
+.home-header p {
+  color: #4B5563;
+  margin: 0;
+}
+
+/* GRILLA PRINCIPAL Y RESPONSIVE */
+.main-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 30px;
+  align-items: start;
+}
+
+/* En móviles, la barra lateral de "Mis Reservas" se pondrá debajo de los recintos */
+@media (max-width: 768px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ALERTAS Y FEEDBACK */
+.feedback-alert {
+  padding: 15px;
+  border-radius: 6px;
+  font-weight: bold;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.feedback-alert.exito {
+  background-color: #DEF7EC;
+  color: #03543F;
+  border-left: 4px solid #0E9F6E;
+}
+
+.feedback-alert.info {
+  background-color: #E1EFFE;
+  color: #1E429F;
+  border-left: 4px solid #3F83F8;
+}
+
+/* PANEL DE FILTROS AVANZADOS */
+.filters-panel {
+  background-color: #FFFFFF;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  flex: 1;
+  min-width: 150px;
+}
+
+.filter-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: #4B5563;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.filter-group select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #E5E7EB;
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+
+.filter-group select.highlight {
+  font-weight: bold;
+  color: #003366;
+}
+
+/* TARJETAS DE RECINTOS Y AFORO */
+.recinto-card {
+  background-color: #FFFFFF;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.recinto-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.recinto-card-header h3 {
+  margin: 0 0 5px 0;
+  color: #003366;
+}
+
+.recinto-card-header span {
+  font-size: 0.85rem;
+  color: #4B5563;
+}
+
+.aforo-text {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.aforo-text.green { color: #059669; }
+.aforo-text.red { color: #DC2626; }
+
+.aforo-bar-bg {
+  width: 100px;
+  height: 6px;
+  background-color: #E5E7EB;
+  border-radius: 3px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.aforo-bar-fill {
+  height: 100%;
+  transition: width 0.4s ease-out, background-color 0.4s;
+}
+
+.aforo-bar-fill.green { background-color: #059669; }
+.aforo-bar-fill.red { background-color: #DC2626; }
+
+/* BLOQUES HORARIOS INTERACTIVOS */
+.bloques-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bloque-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  transition: background 0.2s, transform 0.1s, color 0.2s;
+}
+
+.bloque-btn.available {
+  background-color: #E1EFFE;
+  color: #1E429F;
+  cursor: pointer;
+}
+
+.bloque-btn.available:hover {
+  background-color: #C3DDFD;
+  transform: scale(1.05);
+}
+
+.bloque-btn.disabled {
+  background-color: #F3F4F6;
+  color: #9CA3AF;
+  cursor: not-allowed;
+}
+
+/* PANEL LATERAL: MIS RESERVAS */
+.sidebar-panel {
+  background-color: #FFFFFF;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #F2A900;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.sidebar-title {
+  color: #003366;
+  font-size: 1.2rem;
+  margin: 0 0 15px 0;
+  border-bottom: 1px solid #E5E7EB;
+  padding-bottom: 10px;
+}
+
+.reserva-item {
+  background-color: #F9FAFB;
+  padding: 12px;
+  border-radius: 6px;
+  border-left: 3px solid #003366;
+  margin-bottom: 15px;
+  animation: slideIn 0.3s ease-out;
+}
+
+.reserva-item strong {
+  display: block;
+  color: #111827;
+  font-size: 0.95rem;
+}
+
+.reserva-item span {
+  display: block;
+  font-size: 0.85rem;
+  color: #4B5563;
+  margin: 4px 0;
+}
+
+.implemento-tag {
+  color: #B45309 !important;
+  font-weight: bold;
+}
+
+.anular-btn {
+  margin-top: 8px;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  color: #DC2626;
+  background-color: transparent;
+  border: 1px solid #DC2626;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.anular-btn:hover {
+  background-color: #DC2626;
+  color: #FFFFFF;
+}
+
+/* MODAL DE RESERVAS EXPRESS */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.modal-box {
+  background-color: #FFFFFF;
+  padding: 30px;
+  border-radius: 8px;
+  width: 380px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  animation: popIn 0.2s ease-out;
+}
+
+.modal-box h3 {
+  margin: 0 0 10px 0;
+  color: #003366;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #E5E7EB;
+  margin-top: 5px;
+  font-size: 0.95rem;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #003366;
+  box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.1);
+}
+
+.implemento-box {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #FEF3C7;
+  border-radius: 6px;
+  border: 1px solid #FDE68A;
+}
+
+.implemento-box label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #92400E;
+  font-weight: bold;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #003366;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 1rem;
+}
+
+.submit-btn:hover {
+  background-color: #002244;
+}
+
+.cancel-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  color: #4B5563;
+  border: none;
+  margin-top: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cancel-btn:hover {
+  text-decoration: underline;
+}
+
+/* ANIMACIONES MENORES PARA UX */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}

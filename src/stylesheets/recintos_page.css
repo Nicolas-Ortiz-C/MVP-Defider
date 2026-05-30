@@ -1,0 +1,95 @@
+.recintos-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.recintos-main-title {
+  color: #003366;
+  border-bottom: 3px solid #F2A900;
+  padding-bottom: 10px;
+  margin-bottom: 40px;
+}
+
+.campus-section {
+  margin-bottom: 50px;
+}
+
+.campus-title {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  color: #555;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.campus-indicator {
+  display: inline-block;
+  width: 4px;
+  height: 35px;
+  background-color: #F2A900;
+  margin-right: 15px;
+}
+
+.recintos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.infra-card {
+  position: relative;
+  height: 220px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #4A5568; /* Color gris corporativo si la tarjeta no tiene imagen adjunta */
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.infra-card:hover {
+  transform: scale(1.02);
+}
+
+.infra-card-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.infra-card-title-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.infra-card-indicator {
+  display: inline-block;
+  width: 3px;
+  height: 16px;
+  background-color: #F2A900;
+  margin-right: 8px;
+}
+
+.infra-card h3 {
+  color: white;
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.infra-card-sub {
+  color: #E2E8F0;
+  font-size: 0.85rem;
+  margin-left: 11px;
+}

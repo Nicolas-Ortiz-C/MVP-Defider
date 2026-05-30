@@ -1,0 +1,22 @@
+.usm-navbar {
+  background-color: #003366;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  border-bottom: 4px solid #F2A900;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-link {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+
+.nav-link.active {
+  color: #F2A900;
+}
