@@ -1,39 +1,148 @@
 import React from 'react';
-import '../stylesheets/recintos_page.css';
+import { Link } from 'react-router-dom';
+import '../stylesheets/recintos_page.css'; // Ajusta la ruta si es necesario
 
 export default function RecintosPage() {
   const dataRecintos = [
     {
       campus: 'Campus Casa Central',
       instalaciones: [
-        { name: 'Sala Fitness', img: 'https://defider.usm.cl/wp-content/uploads/2023/03/IMG_0016.jpg' },
-        { name: 'Estadio USM', img: 'https://defider.usm.cl/wp-content/uploads/2022/05/G0251554.2e16d0ba.fill-158x158-1.jpg' },
-        { name: 'Multicancha 7x7', img: 'https://defider.usm.cl/wp-content/uploads/2023/03/IMG_0035.jpg' },
-        { name: 'Cancha Squash', img: 'https://defider.usm.cl/wp-content/uploads/2022/05/Squash_web.2e16d0ba.fill-158x158-1.jpg' },
-        { name: 'Multicancha 5x5', img: 'https://defider.usm.cl/wp-content/uploads/2023/03/IMG_0031.jpg' },
-        { name: 'Gimnasio 1', img: "https://defider.usm.cl/wp-content/uploads/2022/05/Gimnasio_1_web.2e16d0ba.fill-158x158-1.jpg" },
-        { name: 'Gimnasio 2', img: 'https://defider.usm.cl/wp-content/uploads/2023/03/IMG_0023.jpg' },
-        { name: 'Piscina USM', img: 'https://defider.usm.cl/wp-content/uploads/2022/05/G0141451.2e16d0ba.fill-158x158-1.jpg' },
-        { name: 'Cancha Tenis', img: 'https://defider.usm.cl/wp-content/uploads/2022/05/Tenis_1_jCjmKao.2e16d0ba.fill-158x158-1.jpg' },
-        { name: 'Sala de Ajedrez', img: "https://defider.usm.cl/wp-content/uploads/2022/05/IMG_1676_wGpKUu2.2e16d0ba.fill-158x158-1.jpg" },
-        { name: 'Sala de Musculación', img: "https://defider.usm.cl/wp-content/uploads/2023/03/IMG_0018.jpg" }
+        { 
+          name: 'Sala Fitness', 
+          img: 'https://defider.usm.cl/wp-content/uploads/2023/03/IMG_0016.jpg',
+          admin: 'Antonia Aro Núñez',
+          telefono: '+56 32 2654134',
+          horario: '09:00 a 21:00'
+        },
+        { 
+          name: 'Estadio USM', 
+          img: 'https://defider.usm.cl/wp-content/uploads/2022/05/G0251554.2e16d0ba.fill-158x158-1.jpg',
+          admin: 'Equipo DEFIDER',
+          telefono: '+56 32 2654000',
+          horario: '08:00 a 18:00'
+        },
+        { 
+          name: 'Multicancha 7x7', 
+          img: 'https://defider.usm.cl/wp-content/uploads/2023/03/IMG_0035.jpg',
+          admin: 'Equipo DEFIDER',
+          telefono: '+56 32 2654000',
+          horario: '08:00 a 21:00'
+        },
+        { 
+          name: 'Cancha Squash', 
+          img: 'https://defider.usm.cl/wp-content/uploads/2022/05/Squash_web.2e16d0ba.fill-158x158-1.jpg',
+          admin: 'Equipo DEFIDER',
+          telefono: '+56 32 2654000',
+          horario: '08:00 a 21:00'
+        },
+        { 
+          name: 'Multicancha 5x5', 
+          img: 'https://defider.usm.cl/wp-content/uploads/2023/03/IMG_0031.jpg',
+          admin: 'Equipo DEFIDER',
+          telefono: '+56 32 2654000',
+          horario: '08:00 a 21:00'
+        },
+        { 
+          name: 'Gimnasio 1', 
+          img: "https://defider.usm.cl/wp-content/uploads/2022/05/Gimnasio_1_web.2e16d0ba.fill-158x158-1.jpg",
+          admin: 'Equipo DEFIDER',
+          telefono: '+56 32 2654000',
+          horario: '08:00 a 21:00'
+        },
+        { 
+          name: 'Gimnasio 2', 
+          img: 'https://defider.usm.cl/wp-content/uploads/2023/03/IMG_0023.jpg',
+          admin: 'Equipo DEFIDER',
+          telefono: '+56 32 2654000',
+          horario: '08:00 a 21:00'
+        },
+        { 
+          name: 'Piscina USM', 
+          img: 'https://defider.usm.cl/wp-content/uploads/2022/05/G0141451.2e16d0ba.fill-158x158-1.jpg',
+          admin: 'Administración Piscina',
+          telefono: '+56 32 2654000',
+          horario: '09:00 a 19:00'
+        },
+        { 
+          name: 'Cancha Tenis', 
+          img: 'https://defider.usm.cl/wp-content/uploads/2022/05/Tenis_1_jCjmKao.2e16d0ba.fill-158x158-1.jpg',
+          admin: 'Equipo DEFIDER',
+          telefono: '+56 32 2654000',
+          horario: '08:00 a 21:00'
+        },
+        { 
+          name: 'Sala de Ajedrez', 
+          img: "https://defider.usm.cl/wp-content/uploads/2022/05/IMG_1676_wGpKUu2.2e16d0ba.fill-158x158-1.jpg",
+          admin: 'Equipo DEFIDER',
+          telefono: '+56 32 2654000',
+          horario: '08:00 a 21:00'
+        },
+        { 
+          name: 'Sala de Musculación', 
+          img: "https://defider.usm.cl/wp-content/uploads/2023/03/IMG_0018.jpg",
+          admin: 'Equipo DEFIDER',
+          telefono: '+56 32 2654000',
+          horario: '08:00 a 21:00'
+        }
       ]
     },
     {
       campus: 'Campus Santiago San Joaquín',
       instalaciones: [
-        { name: 'Sala Musculación', img: "https://defider.usm.cl/wp-content/uploads/2022/05/Sala_Fitness_San_Joaquin_de_8_a_20.2e16d0ba.fill-158x158-1.jpg" },
-        { name: 'Gimnasio Principal', img: "https://defider.usm.cl/wp-content/uploads/2022/05/Gimnasio_San_joaquin_de_8_a_22_hrs.2e16d0ba.fill-158x158-1.jpg" },
-        { name: 'Cancha Voleibol Playa', img: "https://defider.usm.cl/wp-content/uploads/2022/05/Voley_playa_San_joaquin_de_8_a_22_.2e16d0ba.fill-158x158-1.jpg" },
-        { name: 'Canchas de Tenis', img: "https://defider.usm.cl/wp-content/uploads/2022/05/Cancha_de_tenis_San_joaquin_de_10_.2e16d0ba.fill-158x158-1.jpg" },
-        { name: 'Canchas Futbolito', img: "https://defider.usm.cl/wp-content/uploads/2022/05/Canchas_de_futbolito__San_joaquin_.2e16d0ba.fill-158x158-1.jpg" }
+        { 
+          name: 'Sala Musculación', 
+          img: "https://defider.usm.cl/wp-content/uploads/2022/05/Sala_Fitness_San_Joaquin_de_8_a_20.2e16d0ba.fill-158x158-1.jpg",
+          admin: 'Equipo DEFIDER',
+          telefono: '+56 2 2303 7000',
+          horario: '08:00 a 20:00'
+        },
+        { 
+          name: 'Gimnasio Principal', 
+          img: "https://defider.usm.cl/wp-content/uploads/2022/05/Gimnasio_San_joaquin_de_8_a_22_hrs.2e16d0ba.fill-158x158-1.jpg",
+          admin: 'Equipo DEFIDER',
+          telefono: '+56 2 2303 7000',
+          horario: '08:00 a 22:00'
+        },
+        { 
+          name: 'Cancha Voleibol Playa', 
+          img: "https://defider.usm.cl/wp-content/uploads/2022/05/Voley_playa_San_joaquin_de_8_a_22_.2e16d0ba.fill-158x158-1.jpg",
+          admin: 'Equipo DEFIDER',
+          telefono: '+56 2 2303 7000',
+          horario: '08:00 a 22:00'
+        },
+        { 
+          name: 'Canchas de Tenis', 
+          img: "https://defider.usm.cl/wp-content/uploads/2022/05/Cancha_de_tenis_San_joaquin_de_10_.2e16d0ba.fill-158x158-1.jpg",
+          admin: 'Equipo DEFIDER',
+          telefono: '+56 2 2303 7000',
+          horario: '10:00 a 20:00'
+        },
+        { 
+          name: 'Canchas Futbolito', 
+          img: "https://defider.usm.cl/wp-content/uploads/2022/05/Canchas_de_futbolito__San_joaquin_.2e16d0ba.fill-158x158-1.jpg",
+          admin: 'Equipo DEFIDER',
+          telefono: '+56 2 2303 7000',
+          horario: '08:00 a 22:00'
+        }
       ]
     },
     {
       campus: 'Campus Santiago Vitacura',
       instalaciones: [
-        { name: 'Gimnasio', img: "https://defider.usm.cl/wp-content/uploads/2023/03/Gimnasio-Vitacura.jpeg" },
-        { name: 'Sala de Musculación', img: "https://defider.usm.cl/wp-content/uploads/2022/05/IMG_1541.2e16d0ba.fill-158x158-1.jpg" }
+        { 
+          name: 'Gimnasio', 
+          img: "https://defider.usm.cl/wp-content/uploads/2023/03/Gimnasio-Vitacura.jpeg",
+          admin: 'Equipo DEFIDER',
+          telefono: '+56 2 3202 8000',
+          horario: '09:00 a 20:00'
+        },
+        { 
+          name: 'Sala de Musculación', 
+          img: "https://defider.usm.cl/wp-content/uploads/2022/05/IMG_1541.2e16d0ba.fill-158x158-1.jpg",
+          admin: 'Equipo DEFIDER',
+          telefono: '+56 2 3202 8000',
+          horario: '09:00 a 20:00'
+        }
       ]
     }
   ];
@@ -50,14 +159,10 @@ export default function RecintosPage() {
       </div>
 
       <div className="recintos-container">
-        <div className="defider-breadcrumbs">
-          
-        </div>
-
         <div className="defider-page-intro">
-          <h2>Recintos Deportivos</h2>
+          <h2>Catálogo de Instalaciones</h2>
           <p>
-            El Área de Recintos Deportivos del DEFIDER es la encargada de administrar, mantener y supervisar los recintos, instalaciones e implementos deportivos de la Universidad.
+            Revisa la disponibilidad técnica de nuestras instalaciones a lo largo de todos los campus y gestiona tus reservas deportivas.
           </p>
         </div>
 
@@ -68,24 +173,52 @@ export default function RecintosPage() {
               {grupo.campus}
             </h2>
 
-            <div className="recintos-grid">
-              {grupo.instalaciones.map((recinto, i) => (
-                <div 
-                  key={i} 
-                  className="infra-card"
-                  style={{ backgroundImage: recinto.img ? `url(${recinto.img})` : 'none' }}
-                >
-                  <div className="infra-card-overlay">
-                    <div className="infra-card-title-row">
-                      <span className="infra-card-indicator"></span>
-                      <h3>{recinto.name}</h3>
+            <div className="recintos-list">
+              {grupo.instalaciones.map((recinto, i) => {
+                const nombreCampus = grupo.campus.replace('Campus ', '');
+
+                return (
+                  <div key={i} className="recinto-row-card">
+                    {/* Columna Izquierda: Imagen */}
+                    <div 
+                      className="recinto-row-img" 
+                      style={{ backgroundImage: recinto.img ? `url(${recinto.img})` : 'none' }}
+                    ></div>
+
+                    {/* Columna Derecha: Datos y Acciones */}
+                    <div className="recinto-row-content">
+                      <div className="recinto-header">
+                        <div>
+                          <h3>{recinto.name}</h3>
+                          <span className="campus-badge">{nombreCampus}</span>
+                        </div>
+                      </div>
+
+                      <div className="recinto-details-grid">
+                        <div className="detail-item">
+                          <span className="detail-label">Administración</span>
+                          <span className="detail-value">{recinto.admin || 'No especificada'}</span>
+                        </div>
+                        <div className="detail-item">
+                          <span className="detail-label">Horario Operativo</span>
+                          <span className="detail-value">{recinto.horario || 'N/A'}</span>
+                        </div>
+                        <div className="detail-item">
+                          <span className="detail-label">Contacto</span>
+                          <span className="detail-value">{recinto.telefono || 'N/A'}</span>
+                        </div>
+                      </div>
+
+                      <div className="recinto-actions">
+                        {/* Redirige directamente al portal de reservas en lugar de una página de detalle */}
+                        <Link to="/reservas" className="btn-primary">
+                          Ir a Reservar &rarr;
+                        </Link>
+                      </div>
                     </div>
-                    <span className="infra-card-sub">
-                      {grupo.campus.replace('Campus ', '')}
-                    </span>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </section>
         ))}

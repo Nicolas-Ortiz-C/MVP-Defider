@@ -1,0 +1,142 @@
+/* Variables globales */
+$azul: #003366; 
+$dorado: #F2A900; 
+$gris: #4B5563; 
+$bg: #F9FAFB;
+
+.contacto-page {
+  font-family: Arial, sans-serif;
+  background-color: $bg;
+  min-height: 100vh;
+  padding-bottom: 60px;
+
+  /* Banner Superior Ajustado */
+  .hero-contacto {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Reducimos un poco la altura para que no sea tan invasivo */
+    background-image: url('https://defider.usm.cl/wp-content/uploads/2021/11/9317477054_a31e34b585_k-1600x525-1-1536x504.jpg'); /* Verifica tu ruta */
+    background-size: cover;
+    background-position: center 30%; /* Centra mejor la imagen */
+
+    /* Overlay con gradiente azul institucional más suave */
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0, 51, 102, 0.85) 0%, rgba(0, 0, 0, 0.1) 100%);
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .hero-content {
+      max-width: 1000px; /* Alineado con tu grid principal */
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 20px 30px 20px; /* Espaciado interno inferior */
+      
+      .hero-title {
+        color: #ffffff;
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin: 0;
+        padding-left: 15px;
+        border-left: 5px solid $dorado;
+        letter-spacing: 0.5px;
+      }
+    }
+  }
+
+  /* Contenedor central principal */
+  .contacto-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 20px;
+  }
+
+  /* Migas de pan arregladas */
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: $gris;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+
+    .breadcrumb-line {
+      display: inline-block;
+      width: 4px;
+      height: 16px;
+      background-color: $dorado; /* Cambiado a dorado para destacar */
+      margin-right: 10px;
+    }
+
+    .breadcrumb-link {
+      color: $azul;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s;
+      &:hover {
+        color: #002244;
+        text-decoration: underline;
+      }
+    }
+
+    .breadcrumb-separator {
+      margin: 0 10px;
+      color: #9CA3AF;
+    }
+
+    .breadcrumb-current {
+      font-weight: bold;
+      color: $gris;
+    }
+  }
+
+  /* Contenedor de la tabla con diseño de tarjeta limpia */
+  .table-responsive {
+    background-color: #FFF;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); /* Sombra más definida pero suave */
+    overflow: hidden; /* Evita que las esquinas de la tabla sobresalgan del radio */
+  }
+
+  /* Tabla de Contacto refinada */
+  .contact-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+
+    tr {
+      border-bottom: 1px solid #E5E7EB;
+      &:last-child {
+        border-bottom: none; /* Quita el borde inferior de la última fila */
+      }
+    }
+    
+    td { 
+      padding: 20px 25px; 
+      vertical-align: middle;
+    }
+
+    /* Columna de la izquierda (Nombres de Campus) */
+    .campus-name {
+      background-color: #F9FAFB; /* Gris muy claro y elegante */
+      color: $azul; 
+      font-weight: bold;
+      width: 35%;
+      font-size: 1.05rem;
+      border-right: 1px solid #E5E7EB; /* Separador vertical */
+    }
+
+    /* Columna de la derecha (Información) */
+    .campus-info {
+      color: $gris;
+      font-size: 0.95rem;
+      line-height: 1.8; /* Mayor espaciado entre líneas para mejor lectura */
+    }
+  }
+}

@@ -1,3 +1,6 @@
+/* ==========================================================================
+   Estilos Generales y Cabecera
+   ========================================================================== */
 .recintos-page-wrapper {
   background-color: #FFFFFF;
   padding-bottom: 50px;
@@ -109,63 +112,130 @@
   margin-right: 15px;
 }
 
-.recintos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
-}
-
-.infra-card {
-  position: relative;
-  height: 220px;
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: #4A5568;
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.infra-card:hover {
-  transform: scale(1.02);
-}
-
-.infra-card-overlay {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 60%;
-  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+/* ==========================================================================
+   Tarjetas Horizontales (List View)
+   ========================================================================== */
+.recintos-list {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 20px;
+  gap: 25px;
 }
 
-.infra-card-title-row {
+.recinto-row-card {
   display: flex;
-  align-items: center;
-  margin-bottom: 5px;
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: box-shadow 0.2s, border-color 0.2s;
 }
 
-.infra-card-indicator {
-  display: inline-block;
-  width: 3px;
-  height: 16px;
-  background-color: #F2A900;
-  margin-right: 8px;
+.recinto-row-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+  border-color: #D1D5DB;
 }
 
-.infra-card h3 {
-  color: white;
-  margin: 0;
-  font-size: 1.1rem;
+.recinto-row-img {
+  width: 350px; 
+  min-height: 240px;
+  background-size: cover;
+  background-position: center;
+  border-right: 1px solid #E5E7EB;
+}
+
+.recinto-row-content {
+  flex: 1; 
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.recinto-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #F3F4F6;
+  padding-bottom: 15px;
+}
+
+.recinto-header h3 {
+  margin: 0 0 8px 0;
+  color: #003366;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
-.infra-card-sub {
-  color: #E2E8F0;
-  font-size: 0.85rem;
-  margin-left: 11px;
+.recinto-header .campus-badge {
+  display: inline-block;
+  background-color: #F8FAFC;
+  color: #003366;
+  border: 1px solid #E2E8F0;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.recinto-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.recinto-details-grid .detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.recinto-details-grid .detail-item .detail-label {
+  font-size: 0.75rem;
+  color: #6B7280;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.recinto-details-grid .detail-item .detail-value {
+  font-size: 0.95rem;
+  color: #111827;
+}
+
+.recinto-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.recinto-actions .btn-primary {
+  background-color: #003366;
+  color: #FFFFFF;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.recinto-actions .btn-primary:hover {
+  background-color: #002244;
+  transform: translateY(-1px);
+}
+
+/* Comportamiento Responsivo (Pantallas móviles) */
+@media (max-width: 768px) {
+  .recinto-row-card {
+    flex-direction: column;
+  }
+  
+  .recinto-row-img {
+    width: 100%;
+    height: 220px;
+    border-right: none;
+    border-bottom: 1px solid #E5E7EB;
+  }
 }

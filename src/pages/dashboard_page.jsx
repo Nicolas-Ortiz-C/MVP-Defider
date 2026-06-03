@@ -42,6 +42,15 @@ export default function DashboardPage() {
                 <span className="btn-link">Ver catálogo &rarr;</span>
               </div>
             </Link>
+
+            <Link to="/contacto" className="defider-card">
+              <div className="card-image bg-contacto"></div>
+              <div className="card-body">
+                <h3>Contacto</h3>
+                <p>Comunícate con nuestro equipo para resolver dudas, revisar normativas o solicitar información adicional.</p>
+                <span className="btn-link">Ver información de contacto &rarr;</span>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
