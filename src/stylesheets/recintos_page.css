@@ -1,3 +1,79 @@
+.recintos-page-wrapper {
+  background-color: #FFFFFF;
+  padding-bottom: 50px;
+}
+
+.defider-hero-banner {
+  height: 380px;
+  background-image: url('https://scontent.fscl8-1.fna.fbcdn.net/v/t39.30808-6/481970922_4696835060542312_6553642243787281839_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=3a1ebe&_nc_ohc=EiGfL5FiIugQ7kNvwEopgFW&_nc_oc=AdrNaPoX5i-TCCMR1X9U6-YHmm4jaCTDxbzPkXViaxzGdX4B5CFbM_1Cacb_WhJghJc&_nc_zt=23&_nc_ht=scontent.fscl8-1.fna&_nc_gid=J6U79tMWkayS46piqy7p1g&_nc_ss=7b289&oh=00_Af_Mz0R9y86yrOi1F-mCz9ogrBjOsHSpFEWOe_1brbJiQw&oe=6A252B12'); 
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.defider-hero-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to top, rgba(0, 34, 68, 0.95), transparent);
+  display: flex;
+  align-items: flex-end;
+  padding: 0 10% 30px;
+}
+
+.defider-hero-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.defider-hero-content .yellow-line {
+  width: 4px;
+  height: 35px;
+  background-color: #F2A900;
+}
+
+.defider-hero-content h1 {
+  color: #FFFFFF;
+  font-size: 2.5rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.defider-breadcrumbs {
+  color: #666666;
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.defider-breadcrumbs .blue-line {
+  color: #003366;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.defider-page-intro {
+  margin-bottom: 60px;
+}
+
+.defider-page-intro h2 {
+  color: #333333;
+  font-size: 2rem;
+  margin: 0 0 15px 0;
+}
+
+.defider-page-intro p {
+  color: #666666;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  max-width: 900px;
+  margin: 0;
+}
+
 .recintos-container {
   padding: 40px 20px;
   max-width: 1200px;
@@ -44,7 +120,7 @@
   height: 220px;
   border-radius: 12px;
   overflow: hidden;
-  background-color: #4A5568; /* Color gris corporativo si la tarjeta no tiene imagen adjunta */
+  background-color: #4A5568;
   background-size: cover;
   background-position: center;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);

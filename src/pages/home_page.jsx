@@ -1,28 +1,33 @@
 import React, { useState } from 'react';
-import '../stylesheets/home_page.css';
+import '../stylesheets/home_page.scss';
 
 export default function HomePage() {
-  const diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+  const diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+  const bloquesHorarios = [
+    '09:40 - 10:50', '11:05 - 12:15', '12:30 - 13:40', '14:40 - 15:50', 
+    '16:05 - 17:15', '17:30 - 18:40', '18:50 - 20:00', '20:15 - 21:25'
+  ];
+
+  const generarAgenda = () => {
+    let agenda = {};
+    diasSemana.forEach(dia => {
+      let bloquesObj = {};
+      bloquesHorarios.forEach(hora => {
+        bloquesObj[hora] = { disponible: Math.random() > 0.3 };
+      });
+      agenda[dia] = { aforoActual: Math.floor(Math.random() * 2), bloquesObj };
+    });
+    return agenda;
+  };
 
   const [recintos, setRecintos] = useState([
     {
       id: 1,
-      nombre: 'Multicancha 1',
+      nombre: 'Canchas Futbolito',
       campus: 'San Joaquín',
       deporte: 'Fútbol',
-      aforoMaximo: 14,
-      agenda: {
-        'Lunes': { aforoActual: 4, bloques: [{ hora: '12:30 - 14:00', disponible: true }, { hora: '14:00 - 15:30', disponible: true }] },
-        'Martes': { aforoActual: 8, bloques: [{ hora: '12:30 - 14:00', disponible: false }, { hora: '14:00 - 15:30', disponible: true }] },
-        'Miércoles': { aforoActual: 2, bloques: [{ hora: '12:30 - 14:00', disponible: true }, { hora: '14:00 - 15:30', disponible: true }] },
-        'Jueves': { aforoActual: 10, bloques: [{ hora: '12:30 - 14:00', disponible: true }, { hora: '14:00 - 15:30', disponible: false }] },
-        'Viernes': { aforoActual: 0, bloques: [
-          { hora: '12:30 - 14:00', disponible: false },
-          { hora: '14:00 - 15:30', disponible: true },
-          { hora: '15:30 - 17:00', disponible: true }
-        ]},
-        'Sábado': { aforoActual: 14, bloques: [{ hora: '10:00 - 11:30', disponible: false }, { hora: '11:30 - 13:00', disponible: false }] }
-      }
+      aforoMaximo: 2,
+      agenda: generarAgenda()
     },
     {
       id: 2,
@@ -30,36 +35,22 @@ export default function HomePage() {
       campus: 'Casa Central',
       deporte: 'Musculación',
       aforoMaximo: 20,
-      agenda: {
-        'Lunes': { aforoActual: 12, bloques: [{ hora: '14:00 - 15:30', disponible: true }, { hora: '15:30 - 17:00', disponible: true }] },
-        'Martes': { aforoActual: 15, bloques: [{ hora: '14:00 - 15:30', disponible: true }, { hora: '15:30 - 17:00', disponible: false }] },
-        'Miércoles': { aforoActual: 10, bloques: [{ hora: '14:00 - 15:30', disponible: true }, { hora: '15:30 - 17:00', disponible: true }] },
-        'Jueves': { aforoActual: 14, bloques: [{ hora: '14:00 - 15:30', disponible: false }, { hora: '15:30 - 17:00', disponible: true }] },
-        'Viernes': { aforoActual: 18, bloques: [{ hora: '14:00 - 15:30', disponible: true }, { hora: '15:30 - 17:00', disponible: true }] },
-        'Sábado': { aforoActual: 5, bloques: [{ hora: '09:00 - 10:30', disponible: true }, { hora: '10:30 - 12:00', disponible: true }] }
-      }
+      agenda: generarAgenda()
     },
     {
       id: 3,
       nombre: 'Sala de Musculación',
       campus: 'Vitacura',
+      deporte: 'Musculación',
       aforoMaximo: 15,
-      agenda: {
-        'Lunes': { aforoActual: 15, bloques: [{ hora: '14:00 - 15:30', disponible: false }, { hora: '15:30 - 17:00', disponible: false }] },
-        'Martes': { aforoActual: 8, bloques: [{ hora: '14:00 - 15:30', disponible: true }, { hora: '15:30 - 17:00', disponible: true }] },
-        'Miércoles': { aforoActual: 15, bloques: [{ hora: '14:00 - 15:30', disponible: false }, { hora: '15:30 - 17:00', disponible: false }] },
-        'Jueves': { aforoActual: 12, bloques: [{ hora: '14:00 - 15:30', disponible: true }, { hora: '15:30 - 17:00', disponible: false }] },
-        'Viernes': { aforoActual: 11, bloques: [{ hora: '14:00 - 15:30', disponible: true }, { hora: '15:30 - 17:00', disponible: false }] },
-        'Sábado': { aforoActual: 15, bloques: [{ hora: '09:00 - 10:30', disponible: false }, { hora: '10:30 - 12:00', disponible: false }] }
-      }
+      agenda: generarAgenda()
     }
   ]);
 
   const [filtroSede, setFiltroSede] = useState('Todas');
   const [filtroDeporte, setFiltroDeporte] = useState('Todos');
-  const [filtroDia, setFiltroDia] = useState('Viernes');
 
-  const [reservaModal, setReservaModal] = useState({ activo: false, recinto: null, bloque: null });
+  const [reservaModal, setReservaModal] = useState({ activo: false, recinto: null, bloqueHora: null, dia: null });
   const [solicitarImplemento, setSolicitarImplemento] = useState(false);
   const [feedback, setFeedback] = useState(null);
   const [misReservas, setMisReservas] = useState([]);
@@ -70,28 +61,35 @@ export default function HomePage() {
     return coincideSede && coincideDeporte;
   });
 
-  const iniciarReserva = (recinto, bloque) => {
-    const datosDia = recinto.agenda[filtroDia];
-    if (!bloque.disponible || datosDia.aforoActual >= recinto.aforoMaximo) return;
+  const iniciarReserva = (recinto, dia, hora) => {
+    const bloqueInfo = recinto.agenda[dia].bloquesObj[hora];
+    const aforoActual = recinto.agenda[dia].aforoActual;
+
+    if (!bloqueInfo.disponible || aforoActual >= recinto.aforoMaximo) return;
+    
     setSolicitarImplemento(false);
-    setReservaModal({ activo: true, recinto, bloque });
+    setReservaModal({ activo: true, recinto, bloqueHora: hora, dia: dia });
   };
 
   const confirmarReserva = (e) => {
     e.preventDefault();
-    const { recinto, bloque } = reservaModal;
+    const { recinto, bloqueHora, dia } = reservaModal;
 
     const recintosActualizados = recintos.map(r => {
       if (r.id === recinto.id) {
-        const agendaDiaActual = r.agenda[filtroDia];
-        const bloquesNuevos = agendaDiaActual.bloques.map(b => 
-          b.hora === bloque.hora ? { ...b, disponible: false } : b
-        );
+        const agendaDiaActual = r.agenda[dia];
         return {
           ...r,
           agenda: {
             ...r.agenda,
-            [filtroDia]: { aforoActual: Math.min(agendaDiaActual.aforoActual + 1, r.aforoMaximo), bloques: bloquesNuevos }
+            [dia]: { 
+              ...agendaDiaActual, 
+              aforoActual: Math.min(agendaDiaActual.aforoActual + 1, r.aforoMaximo),
+              bloquesObj: {
+                ...agendaDiaActual.bloquesObj,
+                [bloqueHora]: { disponible: false }
+              }
+            }
           }
         };
       }
@@ -100,12 +98,12 @@ export default function HomePage() {
 
     setRecintos(recintosActualizados);
     setMisReservas([...misReservas, { 
-      id: Date.now(), recintoId: recinto.id, recinto: recinto.nombre, campus: recinto.campus, hora: bloque.hora, dia: filtroDia,
+      id: Date.now(), recintoId: recinto.id, recinto: recinto.nombre, campus: recinto.campus, hora: bloqueHora, dia: dia,
       implemento: solicitarImplemento && recinto.deporte === 'Fútbol' ? '1 Balón de Fútbol' : 'Ninguno'
     }]);
     
-    setReservaModal({ activo: false, recinto: null, bloque: null });
-    setFeedback({ tipo: 'exito', mensaje: `Reserva confirmada en ${recinto.nombre} para el ${filtroDia} (${bloque.hora}).` });
+    setReservaModal({ activo: false, recinto: null, bloqueHora: null, dia: null });
+    setFeedback({ tipo: 'exito', mensaje: `Reserva confirmada en ${recinto.nombre} para el ${dia} (${bloqueHora}).` });
     setTimeout(() => setFeedback(null), 5000);
   };
 
@@ -114,12 +112,18 @@ export default function HomePage() {
     const recintosRestaurados = recintos.map(r => {
       if (r.id === recintoId) {
         const agendaDiaActual = r.agenda[diaReserva];
-        const bloquesNuevos = agendaDiaActual.bloques.map(b => b.hora === horaBloque ? { ...b, disponible: true } : b);
         return {
           ...r,
           agenda: {
             ...r.agenda,
-            [diaReserva]: { aforoActual: Math.max(agendaDiaActual.aforoActual - 1, 0), bloques: bloquesNuevos }
+            [diaReserva]: { 
+              ...agendaDiaActual, 
+              aforoActual: Math.max(agendaDiaActual.aforoActual - 1, 0),
+              bloquesObj: {
+                ...agendaDiaActual.bloquesObj,
+                [horaBloque]: { disponible: true }
+              }
+            }
           }
         };
       }
@@ -163,48 +167,71 @@ export default function HomePage() {
                 <option value="Musculación">Musculación / Fitness</option>
               </select>
             </div>
-            <div className="filter-group">
-              <label>Día de la agenda:</label>
-              <select className="highlight" value={filtroDia} onChange={(e) => setFiltroDia(e.target.value)}>
-                {diasSemana.map(dia => <option key={dia} value={dia}>{dia}</option>)}
-              </select>
-            </div>
           </div>
           
           {recintosFiltrados.map(recinto => {
-            const agendaDia = recinto.agenda[filtroDia] || { aforoActual: 0, bloques: [] };
-            const isLleno = agendaDia.aforoActual >= recinto.aforoMaximo;
-            const porcentaje = (agendaDia.aforoActual / recinto.aforoMaximo) * 100;
-            
             return (
               <div key={recinto.id} className="recinto-card">
                 <div className="recinto-card-header">
                   <div>
                     <h3>{recinto.nombre}</h3>
-                    <span>📍 Sede {recinto.campus} | ⚽ {recinto.deporte}</span>
-                  </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <div className={`aforo-text ${isLleno ? 'red' : 'green'}`}>
-                      Aforo ({filtroDia}): {agendaDia.aforoActual}/{recinto.aforoMaximo}
-                    </div>
-                    <div className="aforo-bar-bg">
-                      <div className={`aforo-bar-fill ${isLleno ? 'red' : 'green'}`} style={{ width: `${porcentaje}%` }}></div>
-                    </div>
+                    <span>📍 Sede {recinto.campus} |  {recinto.deporte}</span>
                   </div>
                 </div>
 
-                <div className="bloques-grid">
-                  {agendaDia.bloques.map((bloque, i) => (
-                    <button
-                      key={i}
-                      onClick={() => iniciarReserva(recinto, bloque)}
-                      disabled={!bloque.disponible || isLleno}
-                      className={`bloque-btn ${bloque.disponible && !isLleno ? 'available' : 'disabled'}`}
-                    >
-                      {bloque.hora} {bloque.disponible && !isLleno ? '✓' : '✗'}
-                    </button>
-                  ))}
+                <div className="table-responsive">
+                  <table className="defider-calendar-table">
+                    <thead>
+                      <tr>
+                        <th>Bloques</th>
+                        {diasSemana.map(dia => <th key={dia}>{dia}</th>)}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {bloquesHorarios.map((hora, index) => (
+                        <tr key={index}>
+                          <td className="bloque-hora">
+                            <strong>{index + 1}</strong><br/>
+                            {hora}
+                          </td>
+                          {diasSemana.map(dia => {
+                            const agendaDia = recinto.agenda[dia];
+                            const isLleno = agendaDia.aforoActual >= recinto.aforoMaximo;
+                            const disponible = agendaDia.bloquesObj[hora].disponible && !isLleno;
+                            
+                            
+                            const vacantes = recinto.aforoMaximo - agendaDia.aforoActual;
+
+                            return (
+                              <td 
+                                key={dia} 
+                                className={disponible ? 'cell-alumnos' : 'cell-cerrada'}
+                                onClick={() => iniciarReserva(recinto, dia, hora)}
+                              >
+                                {disponible ? (
+                                  <>
+                                    <span>Alumnos</span>
+                                   
+                                    <div className="hover-tooltip">
+                                      Prof A. BULO<br/>
+                                      Cupo {recinto.aforoMaximo} Vacantes {vacantes}
+                                    </div>
+                                  </>
+                                ) : (
+                                  <>
+                                    <span className="alumnos-disabled">Alumnos</span><br/>
+                                    <strong>CERRADA</strong>
+                                  </>
+                                )}
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
+
               </div>
             );
           })}
@@ -236,12 +263,19 @@ export default function HomePage() {
             <h3>Confirmar Acción</h3>
             <p style={{ color: '#4B5563', fontSize: '0.95rem' }}>
               Reservar <strong>{reservaModal.recinto.nombre}</strong><br/>
-              Día: <strong>{filtroDia}</strong> | Bloque: {reservaModal.bloque.hora}
+              Día: <strong>{reservaModal.dia}</strong> | Bloque: {reservaModal.bloqueHora}
             </p>
             <form onSubmit={confirmarReserva}>
               <div style={{ marginTop: '15px' }}>
                 <label style={{ fontWeight: 'bold', color: '#111827', fontSize: '0.85rem' }}>Rol USM:</label>
-                <input type="text" placeholder="Ej: 202012345-6" required className="input-field" />
+                <input 
+                  type="text" 
+                  placeholder="Ej: 202012345-6" 
+                  required 
+                  pattern="\d{9}-[0-9kK]"
+                  title="El formato debe ser 9 números, un guión y un dígito o letra K (ej: 202012345-6)"
+                  className="input-field" 
+                />
               </div>
               
               {reservaModal.recinto.deporte === 'Fútbol' && (
@@ -254,7 +288,7 @@ export default function HomePage() {
               )}
 
               <button type="submit" className="submit-btn">Confirmar Reserva</button>
-              <button type="button" onClick={() => setReservaModal({ activo: false, recinto: null, bloque: null })} className="cancel-btn">Cancelar</button>
+              <button type="button" onClick={() => setReservaModal({ activo: false, recinto: null, bloqueHora: null, dia: null })} className="cancel-btn">Cancelar</button>
             </form>
           </div>
         </div>

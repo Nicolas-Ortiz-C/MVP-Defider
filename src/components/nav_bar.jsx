@@ -9,7 +9,7 @@ export default function NavBar() {
         Inicio
       </NavLink>
       <NavLink to="/reservas" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-        Reservas Express
+        Reservas 
       </NavLink>
       <NavLink to="/recintos" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
         Infraestructura

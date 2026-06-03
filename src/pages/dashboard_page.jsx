@@ -1,30 +1,50 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../stylesheets/dashboard_page.css';
+import '../stylesheets/dashboard_page.scss';
 
 export default function DashboardPage() {
   return (
-    <div className="dashboard-container">
-      <h1 className="dashboard-title">Bienvenido a DEFIDER</h1>
-      <p className="dashboard-subtitle">
-        Gestiona tus reservas deportivas e infraestructura de manera centralizada.
-      </p>
+    <div className="defider-inicio">
+      <section className="hero-banner">
+        <div className="hero-overlay">
+          <div className="hero-content">
+            <p className="hero-subtitle">Universidad Técnica Federico Santa María</p>
+            <h1 className="hero-title">Departamento de Educación Física, Deportes y Recreación</h1>
+            <p className="hero-description">
+              Bienvenido al nuevo portal de autogestión deportiva.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      <div className="dashboard-grid">
-        <Link to="/reservas" className="dashboard-card">
-          <h2>⚽ Reservar Recintos</h2>
-          <p>
-            Consulta la disponibilidad en tiempo real de aforos y asegura tu cupo de forma express para tus actividades.
-          </p>
-        </Link>
+      <section className="accesos-section">
+        <div className="container">
+          <div className="section-header">
+            <h2>Servicios en Línea</h2>
+            <div className="header-line"></div>
+          </div>
 
-        <Link to="/recintos" className="dashboard-card">
-          <h2>🏢 Infraestructura</h2>
-          <p>
-            Revisa la lista completa de recintos, canchas y gimnasios disponibles a lo largo de cada uno de los campus universitarios.
-          </p>
-        </Link>
-      </div>
+          <div className="cards-grid">
+            <Link to="/reservas" className="defider-card">
+              <div className="card-image bg-canchas"></div>
+              <div className="card-body">
+                <h3>Reservar Recintos</h3>
+                <p>Accede a la disponibilidad en tiempo real y asegura tu bloque horario para canchas y salas de musculación.</p>
+                <span className="btn-link">Ingresar al portal &rarr;</span>
+              </div>
+            </Link>
+
+            <Link to="/recintos" className="defider-card">
+              <div className="card-image bg-infra"></div>
+              <div className="card-body">
+                <h3>Infraestructura</h3>
+                <p>Conoce nuestras instalaciones deportivas disponibles a lo largo de todos los campus y sedes de la universidad.</p>
+                <span className="btn-link">Ver catálogo &rarr;</span>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

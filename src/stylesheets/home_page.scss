@@ -1,0 +1,120 @@
+
+$azul: #003366; 
+$dorado: #F2A900; 
+$gris: #4B5563; 
+$bg: #F9FAFB;
+
+
+.home-container { font-family: Arial, sans-serif; background-color: $bg; min-height: 100vh; padding: 20px; }
+.home-header { max-width: 1000px; margin: 0 auto 30px; border-bottom: 3px solid $dorado; padding-bottom: 15px;
+  h1 { color: $azul; margin: 0 0 5px 0; }
+  p { color: $gris; margin: 0; }
+}
+
+
+.main-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 300px; gap: 30px; align-items: start; }
+.left-column { display: flex; flex-direction: column; gap: 20px; }
+
+
+.feedback-alert { padding: 15px; border-radius: 6px; font-weight: bold; animation: fadeIn 0.3s ease-in-out;
+  &.exito { background-color: #DEF7EC; color: #03543F; border-left: 4px solid #0E9F6E; }
+  &.info { background-color: #E1EFFE; color: #1E429F; border-left: 4px solid #3F83F8; }
+}
+.filters-panel { background-color: #FFF; padding: 15px; border-radius: 8px; border: 1px solid #E5E7EB; display: flex; gap: 15px; flex-wrap: wrap; }
+.filter-group { flex: 1; min-width: 150px;
+  label { display: block; font-size: 0.85rem; color: $gris; margin-bottom: 5px; font-weight: bold; }
+  select { width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #E5E7EB; background-color: #FFF; cursor: pointer; }
+}
+
+
+.recinto-card { background-color: #FFF; padding: 20px; border-radius: 8px; border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.recinto-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;
+  h3 { margin: 0 0 5px 0; color: $azul; font-size: 1.2rem; text-transform: uppercase;}
+  span { font-size: 0.85rem; color: $gris; }
+}
+
+.table-responsive { width: 100%; overflow-x: visible; }
+.defider-calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 0.8rem;
+  
+  th, td { border: 1px solid #D1D5DB; padding: 8px 4px; }
+  th { background-color: #E5E7EB; color: $azul; font-weight: bold; }
+  
+  .bloque-hora { background-color: #F3F4F6; color: $gris; white-space: nowrap; }
+  
+  
+  .cell-alumnos { 
+    background-color: #C3DDFD; 
+    color: #1E429F; 
+    cursor: pointer; 
+    font-weight: bold;
+    position: relative; 
+    transition: background-color 0.2s;
+    
+    &:hover { 
+      background-color: #A4CAFE; 
+      
+      
+      .hover-tooltip {
+        display: block;
+      }
+    }
+  }
+
+  
+  .hover-tooltip {
+    display: none;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FFFFE0; 
+    border: 1px solid #666;
+    color: #000;
+    padding: 4px 6px;
+    font-size: 0.75rem;
+    font-weight: normal;
+    white-space: nowrap;
+    z-index: 50;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    pointer-events: none; 
+  }
+
+  
+  .cell-cerrada {
+    background-color: #F9FAFB;
+    cursor: not-allowed;
+    .alumnos-disabled { color: $azul; font-weight: normal; }
+    strong { color: #DC2626; display: block; margin-top: 2px; }
+  }
+}
+
+
+.sidebar-panel { background-color: #FFF; padding: 20px; border-radius: 8px; border: 1px solid $dorado; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.sidebar-title { color: $azul; font-size: 1.2rem; margin: 0 0 15px 0; border-bottom: 1px solid #E5E7EB; padding-bottom: 10px; }
+.reserva-item { background-color: $bg; padding: 12px; border-radius: 6px; border-left: 3px solid $azul; margin-bottom: 15px; animation: slideIn 0.3s ease-out;
+  strong { display: block; color: #111827; font-size: 0.95rem; }
+  span { display: block; font-size: 0.85rem; color: $gris; margin: 4px 0; }
+}
+.implemento-tag { color: #B45309 !important; font-weight: bold; }
+.anular-btn { margin-top: 8px; padding: 4px 8px; font-size: 0.8rem; color: #DC2626; background: transparent; border: 1px solid #DC2626; border-radius: 4px; cursor: pointer; transition: all 0.2s; &:hover { background-color: #DC2626; color: #FFF; } }
+
+
+.modal-overlay { position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(2px); }
+.modal-box { background-color: #FFF; padding: 30px; border-radius: 8px; width: 380px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); animation: popIn 0.2s ease-out;
+  h3 { margin: 0 0 10px 0; color: $azul; }
+}
+.input-field { width: 100%; padding: 10px; box-sizing: border-box; border-radius: 4px; border: 1px solid #E5E7EB; margin-top: 5px; font-size: 0.95rem; &:focus { outline: none; border-color: $azul; box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.1); } }
+.implemento-box { margin-top: 15px; padding: 10px; background-color: #FEF3C7; border-radius: 6px; border: 1px solid #FDE68A;
+  label { display: flex; align-items: center; cursor: pointer; font-size: 0.9rem; color: #92400E; font-weight: bold; }
+}
+.submit-btn { width: 100%; padding: 10px; background-color: $azul; color: #FFF; border: none; border-radius: 4px; font-weight: bold; margin-top: 20px; cursor: pointer; transition: background 0.2s; font-size: 1rem; &:hover { background-color: #002244; } }
+.cancel-btn { width: 100%; padding: 10px; background: transparent; color: $gris; border: none; margin-top: 5px; cursor: pointer; font-weight: bold; &:hover { text-decoration: underline; } }
+
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes popIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
