@@ -13,9 +13,13 @@ export default function HomePage() {
     diasSemana.forEach(dia => {
       let bloquesObj = {};
       bloquesHorarios.forEach(hora => {
-        bloquesObj[hora] = { disponible: Math.random() > 0.3 };
+        // El aforo y la disponibilidad ahora pertenecen EXCLUSIVAMENTE al bloque
+        bloquesObj[hora] = { 
+          disponible: Math.random() > 0.3,
+          aforoActual: Math.floor(Math.random() * 2) 
+        };
       });
-      agenda[dia] = { aforoActual: Math.floor(Math.random() * 2), bloquesObj };
+      agenda[dia] = { bloquesObj };
     });
     return agenda;
   };
@@ -63,9 +67,8 @@ export default function HomePage() {
 
   const iniciarReserva = (recinto, dia, hora) => {
     const bloqueInfo = recinto.agenda[dia].bloquesObj[hora];
-    const aforoActual = recinto.agenda[dia].aforoActual;
 
-    if (!bloqueInfo.disponible || aforoActual >= recinto.aforoMaximo) return;
+    if (!bloqueInfo.disponible || bloqueInfo.aforoActual >= recinto.aforoMaximo) return;
     
     setSolicitarImplemento(false);
     setReservaModal({ activo: true, recinto, bloqueHora: hora, dia: dia });
@@ -78,16 +81,22 @@ export default function HomePage() {
     const recintosActualizados = recintos.map(r => {
       if (r.id === recinto.id) {
         const agendaDiaActual = r.agenda[dia];
+        const bloqueActual = agendaDiaActual.bloquesObj[bloqueHora];
+        const nuevoAforo = Math.min(bloqueActual.aforoActual + 1, r.aforoMaximo);
+
         return {
           ...r,
           agenda: {
             ...r.agenda,
             [dia]: { 
               ...agendaDiaActual, 
-              aforoActual: Math.min(agendaDiaActual.aforoActual + 1, r.aforoMaximo),
               bloquesObj: {
                 ...agendaDiaActual.bloquesObj,
-                [bloqueHora]: { disponible: false }
+                [bloqueHora]: { 
+                  ...bloqueActual,
+                  aforoActual: nuevoAforo,
+                  disponible: nuevoAforo < r.aforoMaximo 
+                }
               }
             }
           }
@@ -109,19 +118,26 @@ export default function HomePage() {
 
   const anularReserva = (idReserva, recintoId, diaReserva, horaBloque) => {
     setMisReservas(misReservas.filter(res => res.id !== idReserva));
+    
     const recintosRestaurados = recintos.map(r => {
       if (r.id === recintoId) {
         const agendaDiaActual = r.agenda[diaReserva];
+        const bloqueActual = agendaDiaActual.bloquesObj[horaBloque];
+        const nuevoAforo = Math.max(bloqueActual.aforoActual - 1, 0);
+
         return {
           ...r,
           agenda: {
             ...r.agenda,
             [diaReserva]: { 
               ...agendaDiaActual, 
-              aforoActual: Math.max(agendaDiaActual.aforoActual - 1, 0),
               bloquesObj: {
                 ...agendaDiaActual.bloquesObj,
-                [horaBloque]: { disponible: true }
+                [horaBloque]: { 
+                  ...bloqueActual,
+                  aforoActual: nuevoAforo,
+                  disponible: true 
+                }
               }
             }
           }
@@ -129,6 +145,7 @@ export default function HomePage() {
       }
       return r;
     });
+    
     setRecintos(recintosRestaurados);
     setFeedback({ tipo: 'info', mensaje: 'Reserva anulada. Cupo liberado.' });
     setTimeout(() => setFeedback(null), 4000);
@@ -195,12 +212,10 @@ export default function HomePage() {
                             {hora}
                           </td>
                           {diasSemana.map(dia => {
-                            const agendaDia = recinto.agenda[dia];
-                            const isLleno = agendaDia.aforoActual >= recinto.aforoMaximo;
-                            const disponible = agendaDia.bloquesObj[hora].disponible && !isLleno;
-                            
-                            
-                            const vacantes = recinto.aforoMaximo - agendaDia.aforoActual;
+                            const bloqueInfo = recinto.agenda[dia].bloquesObj[hora];
+                            const isLleno = bloqueInfo.aforoActual >= recinto.aforoMaximo;
+                            const disponible = bloqueInfo.disponible && !isLleno;
+                            const vacantes = recinto.aforoMaximo - bloqueInfo.aforoActual;
 
                             return (
                               <td 
@@ -211,7 +226,6 @@ export default function HomePage() {
                                 {disponible ? (
                                   <>
                                     <span>Alumnos</span>
-                                   
                                     <div className="hover-tooltip">
                                       Prof A. BULO<br/>
                                       Cupo {recinto.aforoMaximo} Vacantes {vacantes}
@@ -231,7 +245,6 @@ export default function HomePage() {
                     </tbody>
                   </table>
                 </div>
-
               </div>
             );
           })}
