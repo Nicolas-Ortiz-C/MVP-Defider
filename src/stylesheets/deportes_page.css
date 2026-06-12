@@ -1,0 +1,107 @@
+/* ==========================================================================
+   Página Deportes - Listado de disciplinas
+   ========================================================================== */
+.deportes-page-wrapper {
+  background-color: #FFFFFF;
+  padding-bottom: 50px;
+}
+
+.deportes-hero {
+  background-image: url('https://defider.usm.cl/wp-content/uploads/2022/05/G0251554.2e16d0ba.fill-158x158-1.jpg');
+}
+
+.deportes-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.deportes-container .defider-page-intro {
+  margin-bottom: 40px;
+}
+
+.deportes-container .defider-page-intro p {
+  color: #666666;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  max-width: 1000px;
+  margin: 0;
+}
+
+/* Grid de tarjetas */
+.deportes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.deporte-card {
+  position: relative;
+  display: block;
+  height: 220px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #003366;
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.deporte-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.18);
+}
+
+.deporte-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0.35) 100%);
+  display: flex;
+  align-items: flex-end;
+}
+
+.deporte-card-content {
+  padding: 18px;
+  width: 100%;
+}
+
+.yellow-line-small {
+  width: 28px;
+  height: 4px;
+  background-color: #F2A900;
+  margin-bottom: 10px;
+}
+
+.deporte-card-content h3 {
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  margin: 0 0 4px 0;
+  font-weight: 700;
+}
+
+.deporte-categoria {
+  color: #E5E7EB;
+  font-size: 0.85rem;
+}
+
+/* Responsivo */
+@media (max-width: 1100px) {
+  .deportes-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .deportes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .deportes-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,122 @@
+/* ==========================================================================
+   Página de detalle de un deporte específico
+   ========================================================================== */
+.deporte-detalle-wrapper {
+  background-color: #FFFFFF;
+  padding-bottom: 50px;
+}
+
+.deporte-detalle-hero {
+  height: 220px;
+  background-color: #003366;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.deporte-detalle-hero .defider-hero-overlay {
+  height: 100%;
+  align-items: center;
+  background: linear-gradient(to right, rgba(0, 34, 68, 0.85), rgba(0, 34, 68, 0.4));
+}
+
+.deporte-detalle-container {
+  padding: 30px 20px 60px;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Breadcrumbs */
+.deporte-detalle-container .defider-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666666;
+  font-size: 0.95rem;
+  margin: 20px 0 25px;
+}
+
+.deporte-detalle-container .defider-breadcrumbs a {
+  color: #003366;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.deporte-detalle-container .defider-breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.deporte-detalle-container .defider-breadcrumbs .breadcrumb-current {
+  color: #333333;
+  font-weight: bold;
+}
+
+/* Descripción */
+.deporte-descripcion p {
+  color: #444444;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  margin: 0 0 18px 0;
+}
+
+/* Sede / información de entrenamiento */
+.deporte-sede {
+  margin-top: 35px;
+}
+
+.deporte-sede h2 {
+  color: #003366;
+  font-size: 1.4rem;
+  margin: 0 0 15px 0;
+  border-left: 4px solid #F2A900;
+  padding-left: 12px;
+}
+
+.deporte-info-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.deporte-info-table tr {
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.deporte-info-table tr:last-child {
+  border-bottom: none;
+}
+
+.deporte-info-table td {
+  padding: 14px 18px;
+  font-size: 0.95rem;
+}
+
+.deporte-info-table .info-label {
+  background-color: #F8FAFC;
+  color: #003366;
+  font-weight: bold;
+  width: 35%;
+}
+
+.deporte-info-table .info-value {
+  color: #333333;
+}
+
+.deporte-info-table .info-value .info-line {
+  display: block;
+}
+
+/* Botón volver */
+.volver-container {
+  margin-top: 40px;
+}
+
+@media (max-width: 600px) {
+  .deporte-info-table .info-label {
+    width: 45%;
+  }
+}

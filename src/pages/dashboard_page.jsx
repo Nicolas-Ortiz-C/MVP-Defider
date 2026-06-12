@@ -34,6 +34,15 @@ export default function DashboardPage() {
               </div>
             </Link>
 
+            <Link to="/deportes" className="defider-card">
+              <div className="card-image bg-deportes"></div>
+              <div className="card-body">
+                <h3>Deportes</h3>
+                <p>Descubre las disciplinas y selecciones deportivas de la USM, junto con sus horarios y profesores a cargo.</p>
+                <span className="btn-link">Ver disciplinas &rarr;</span>
+              </div>
+            </Link>
+
             <Link to="/recintos" className="defider-card">
               <div className="card-image bg-infra"></div>
               <div className="card-body">

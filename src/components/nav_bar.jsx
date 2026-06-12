@@ -14,6 +14,9 @@ export default function NavBar() {
       <NavLink to="/recintos" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
         Infraestructura
       </NavLink>
+      <NavLink to="/deportes" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+        Deportes
+      </NavLink>
       <NavLink to="/contacto" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
         Contacto
       </NavLink>
